@@ -1,0 +1,36 @@
+<h3>Лист завдань</h3>
+<input type="text" id="new-task" placeholder="Запиши завдання">
+<button id="add-task">Додати завдання</button>
+
+<ul id="task-list"></ul>
+
+<script>
+  const taskList = document.getElementById('task-list');
+  const newTaskInput = document.getElementById('new-task');
+  const addTaskButton = document.getElementById('add-task');
+  
+  addTaskButton.addEventListener('click', function() {
+    const taskText = newTaskInput.value;
+
+    if (taskText) {
+      const newTask = document.createElement('li');
+      newTask.textContent = taskText;
+
+    
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'Видалити';
+      newTask.appendChild(removeButton);
+
+      
+      taskList.appendChild(newTask);
+
+      
+      newTaskInput.value = '';
+
+      
+      removeButton.addEventListener('click', function() {
+        taskList.removeChild(newTask);
+      });
+    }
+  });
+</script>
